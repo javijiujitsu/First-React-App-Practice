@@ -1,20 +1,19 @@
-'use strict';
-
 var nameVar = 'Javier';
 var nameVar = 'Mike';
 console.log('nameVar', nameVar);
 
 // Cannot redfine Let variable
 
-var nameLet = 'Mike';
-nameLet = 'Julie';
-console.log('nameJet', nameLet);
+let nameLet = 'Mike';
+nameLet  = 'Julie';
+console.log ('nameJet', nameLet);
 
 // cannot redefine Const, its an immutable variable
 // cannot re assign Const, its an immutable variable 
 
-var nameConst = 'Frank';
+const nameConst = 'Frank';
 console.log('nameConst', nameConst);
+
 
 // Just like var, let and const are function scope
 
@@ -25,7 +24,7 @@ console.log('nameConst', nameConst);
 
 var fullName = 'Javier Buitrago';
 
-if (fullName) {
+if (fullName){
     var firstName = fullName.split(' ')[0];
     console.log(firstName);
 }

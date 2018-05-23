@@ -4,12 +4,19 @@ console.log("App.js is running!");
 
 var app = {
     title: 'Decision App',
-    subtitle: 'This is what I have to do'
+    subtitle: 'This is what I have to do',
+    options: ['One', 'Two']
 };
+
 var templateOne = (
 <div>
     <h1>{app.title}</h1> 
-    <p> {app.subtitle}</p>
+    {app.subtitle && <p>{app.subtitle}</p>}
+    <p> {app.options.length > 0 ? "Here are your options": "No options"} </p>
+    <ol>
+        <li> Item one</li>
+        <li> Item Two </li>
+</ol>
 </div>
 );
 
@@ -19,12 +26,18 @@ var user = {
     location: 'Miami'
 };
 
+function getLocation (location){
+    if (location){
+     return <p> Location: {location}</p>;
+    }
+}
+
 var templateTwo = (
 <div>
-    <h1>{user.name} </h1>
-    <p> Age: {user.age}</p>
-    <p> Location: {user.location} </p>
-</div>
+    <h1>{user.name ? user.name: 'Anonymous'} </h1>
+    {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
+    {getLocation(user.location)}
+ </div>
 );
 
 
