@@ -20,9 +20,10 @@ console.log('nameConst', nameConst);
 // let and cost are BLOCK LEVEL SCOPING unlike Var which is not
 
 
-// BLOCK SCOPING
+// BLOCK SCOPING includes scope in IF and Else statement
 
-var fullName = 'Javier Buitrago';
+const fullName = 'Javier Buitrago';
+let firstName;
 
 if (fullName){
     var firstName = fullName.split(' ')[0];

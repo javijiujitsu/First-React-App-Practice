@@ -1,5 +1,3 @@
-"use strict";
-
 /* ES4 Function Synthax
 
 const square = function (x){
@@ -41,8 +39,9 @@ return fullName.split(' ')[0];
 console.log(getFirstName("Javier Buitrago"));
 */
 
-var getFirstName = function getFirstName(fullName) {
-    return fullName.split(' ')[0];
-};;
+const getFirstName = (fullName) => fullName.split(' ')[0];;
 
 console.log(getFirstName("Javier Buitrago"));
+    
+
+
