@@ -1,5 +1,3 @@
-'use strict';
-
 // arguments object - no longer bound with arrow functions 
 // this keyword - no longer bound with arrow functions
 
@@ -10,16 +8,15 @@
 // console.log(add(55,1));
 
 
-var user = {
+const user = {
     name: 'Javier',
     cities: ['Barranquilla', 'Miami', ' Santa Marta'],
-    printPlacesLived: function printPlacesLived() {
-        var _this = this;
-
-        this.cities.forEach(function (city) {
-            console.log(_this.name + ' has lived in ' + city);
+    printPlacesLived: function (){
+        this.cities.forEach((city) => {
+            console.log(this.name + ' has lived in ' + city)
         });
     }
 };
 
 user.printPlacesLived();
+
