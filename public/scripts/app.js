@@ -1,48 +1,113 @@
-"use strict";
+'use strict';
 
-// arguments object - no longer bound with arrow functions 
-// this keyword - no longer bound with arrow functions
+console.log("App.js is running!");
 
-//const add = (a, b) => {
-// console.log(arguments);
-//  return a + b;
-// };
-// console.log(add(55,1));
-// arrow function does not bind its on this value
+// JSX - JavaScript XML
 
-//const user = {
-// name: 'Javier',
-//  cities: ['Barranquilla', 'Miami', ' Santa Marta'],
-// printPlacesLived(){
-// const cityMessages = this.cities.map((city) => {
-//   return this.name + ' has lived in ' + city;
-
-
-//});
-//  return cityMessages;
-//  }
-// };
-
-// console.log(user.printPlacesLived());
-
-// Challenge area
-
-// numbers - array of numbers
-// mutiplyBy - single number
-// multiply return a new array where the numbers have mutpilied
-
-var multiplier = {
-  multiplyBy: 2,
-  numbers: [1, 2, 3, 4, 5],
-
-  multiply: function multiply() {
-    var _this = this;
-
-    var multipliedNumbers = this.numbers.map(function (number) {
-      return _this.multiplyBy * number;
-    });
-    return multipliedNumbers;
-  }
+var app = {
+    title: 'Decision App',
+    subtitle: 'This is what I have to do',
+    options: ['One', 'Two']
 };
 
-console.log(multiplier.multiply()); // [1 , 2, 3] 2 [ 2, 4, 6]
+var templateOne = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        'p',
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        ' ',
+        app.options.length > 0 ? "Here are your options" : "No options",
+        ' '
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            ' Item one'
+        ),
+        React.createElement(
+            'li',
+            null,
+            ' Item Two '
+        )
+    )
+);
+
+var user = {
+    name: 'Javier',
+    age: 28,
+    location: 'Miami'
+};
+
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            ' Location: ',
+            location
+        );
+    }
+}
+
+var count = 0;
+
+var addOne = function addOne() {
+    console.log("addOne");
+};
+
+var minusOne = function minusOne() {
+    console.log("minusOne");
+};
+
+var reset = function reset() {
+    console.log("reset");
+};
+
+var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        ' Count: ',
+        count
+    ),
+    React.createElement(
+        'button',
+        { onClick: addOne },
+        '+1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: minusOne },
+        '-1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: reset },
+        'reset'
+    )
+);
+
+// Challenge
+// Make button with -1  minus one function and log minus one
+//make reset button
+
+
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(templateTwo, appRoot);
