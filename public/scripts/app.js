@@ -7,107 +7,87 @@ console.log("App.js is running!");
 var app = {
     title: 'Decision App',
     subtitle: 'This is what I have to do',
-    options: ['One', 'Two']
+    options: []
 };
 
-var templateOne = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        'p',
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        'p',
-        null,
-        ' ',
-        app.options.length > 0 ? "Here are your options" : "No options",
-        ' '
-    ),
-    React.createElement(
-        'ol',
-        null,
-        React.createElement(
-            'li',
-            null,
-            ' Item one'
-        ),
-        React.createElement(
-            'li',
-            null,
-            ' Item Two '
-        )
-    )
-);
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault();
 
-var user = {
-    name: 'Javier',
-    age: 28,
-    location: 'Miami'
-};
+    var option = e.target.elements.option.value;
 
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            'p',
-            null,
-            ' Location: ',
-            location
-        );
+    if (option) {
+        app.options.push(option);
+        e.target.elements.option.value = '';
+        render();
     }
-}
-
-var count = 0;
-
-var addOne = function addOne() {
-    console.log("addOne");
 };
 
-var minusOne = function minusOne() {
-    console.log("minusOne");
+var onRemoveAll = function onRemoveAll(option) {
+    app.options = [];
+    render();
 };
-
-var reset = function reset() {
-    console.log("reset");
-};
-
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        ' Count: ',
-        count
-    ),
-    React.createElement(
-        'button',
-        { onClick: addOne },
-        '+1'
-    ),
-    React.createElement(
-        'button',
-        { onClick: minusOne },
-        '-1'
-    ),
-    React.createElement(
-        'button',
-        { onClick: reset },
-        'reset'
-    )
-);
-
-// Challenge
-// Make button with -1  minus one function and log minus one
-//make reset button
-
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+var render = function render() {
+    var templateOne = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            app.title
+        ),
+        app.subtitle && React.createElement(
+            'p',
+            null,
+            app.subtitle
+        ),
+        React.createElement(
+            'p',
+            null,
+            ' ',
+            app.options.length > 0 ? "Here are your options" : "No options",
+            ' '
+        ),
+        React.createElement(
+            'p',
+            null,
+            ' ',
+            app.options.length
+        ),
+        React.createElement(
+            'button',
+            { onClick: onRemoveAll },
+            'Remove All'
+        ),
+        React.createElement(
+            'ol',
+            null,
+            React.createElement(
+                'li',
+                null,
+                ' Item one'
+            ),
+            React.createElement(
+                'li',
+                null,
+                ' Item Two '
+            )
+        ),
+        React.createElement(
+            'form',
+            { onSubmit: onFormSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'Add Option'
+            )
+        )
+    );
+
+    ReactDOM.render(templateOne, appRoot);
+};
+
+render();
