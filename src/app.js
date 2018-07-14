@@ -1,5 +1,7 @@
 //--------------  REACT COMPONENTS --------------//
 
+
+
 class IndecisionApp extends React.Component {
     render() {
         const title = 'Decision';
@@ -46,23 +48,27 @@ class Action extends React.Component {
 
 
 
+
 class Options extends React.Component {
+    constructor(props){
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+
+
+    }
     handleRemoveAll(){
-        alert('This is going to remove something');
+        console.log(this.props.options);
+        // alert('This is going to remove something');
     }
     render(){
         return (
             <div>
+            <button onClick={this.handleRemoveAll}> Remove all button</button>
             {
               this.props.options.map((option) => <Option key={option} optionText={option} />)
 
-            
-           
-
-
             }
             
-            <button onClick={this.handleRemoveAll}> Remove all button</button>
             </div>
 
         );
