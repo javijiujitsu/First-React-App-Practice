@@ -1,3 +1,4 @@
+
 //--------------  REACT COMPONENTS --------------//
 
 
@@ -71,63 +72,111 @@ class IndecisionApp extends React.Component {
     }
 }
 
-class Header extends React.Component {
-    render(){
-        console.log(this.prop);
+
+const Header = (props) => {
         return (
             <div>
-                <h1>{this.props.title}</h1>
-                <h2>{this.props.subtitle}</h2>
+                <h1>{props.title}</h1>
+                <h2>{props.subtitle}</h2>
             </div>
 
         );
-    }
-}
-
-class Action extends React.Component {
-
-    render(){
-        return (
-            <div>
-                <button 
-                onClick={this.props.handlePick}
-                disabled={!this.props.hasOptions}
-                > 
-                    What should I do?
-                </button>
-            </div>
-        );
-    }
-}
+    };
 
 
+//class Header extends React.Component {
+//    render(){
+//        console.log(this.prop);
+//        return (
+//            <div>
+//                <h1>{this.props.title}</h1>
+//                <h2>{this.props.subtitle}</h2>
+//            </div>
+//
+//        );
+//    }
+// }
 
+const Action = (props) => {
+    return (
+        <div>
+            <button 
+            onClick={props.handlePick}
+            disabled={!props.hasOptions}
+            > 
+        What should I do?
+            </button>
+        </div>
+    );
+};
 
-class Options extends React.Component {
-    render(){
-        return (
-            <div>
-            <button onClick={this.props.handleDeleteOptions}> Remove all button</button>
-            {
-              this.props.options.map((option) => <Option key={option} optionText={option} />)
+// class Action extends React.Component {
 
-            }
-            
-            </div>
+  //  render(){
+  //    return (
+  //          <div>
+  //              <button 
+  //              onClick={this.props.handlePick}
+  //              disabled={!this.props.hasOptions}
+  //              > 
+  //                  What should I do?
+  //              </button>
+  //          </div>
+  //      );
+  //  }
+// }
 
-        );
-    }
-}
+const Options = (props) => {
+    return (
+        <div>
+        <button onClick={props.handleDeleteOptions}> Remove all button</button>
+        {
+          props.options.map((option) => <Option key={option} optionText={option} />)
 
-class Option extends React.Component {
-        render(){
-            return (
-             <div>
-            {this.props.optionText}
-             </div>
-            );
         }
-}
+        </div>
+
+    );
+};
+
+
+//class Options extends React.Component {
+//    render(){
+//        return (
+//            <div>
+//            <button onClick={this.props.handleDeleteOptions}> Remove all button</button>
+//            {
+//              this.props.options.map((option) => <Option key={option} optionText={option} />)
+//
+//            }
+//            
+//            </div>
+
+//        );
+//    }
+// }
+
+const Option = (props) => {
+    return (
+        <div>
+       {props.optionText}
+        </div>
+       );
+};
+
+
+
+
+
+//class Option extends React.Component {
+//        render(){
+//            return (
+//             <div>
+//            {this.props.optionText}
+//             </div>
+//            );
+//        }
+// }
 
 
 
@@ -168,6 +217,17 @@ this.setState(() => {
     }
 }
 
+// stateless functional component  usally simple presentation components 
+
+//const User = (props) => {
+//  return (
+// <div>
+//        <p>Name: {props.name}</p>
+//        <p>Age: {props.age}</p>
+//     </div>
+
+//    );
+// };
 
 
 //---------------- ENDING OF REACT COMPONENTS --------------------//
