@@ -1,4 +1,10 @@
 
+
+
+
+
+
+
 //--------------  REACT COMPONENTS --------------//
 
 
@@ -105,7 +111,7 @@ class IndecisionApp extends React.Component {
 
 const Header = (props) => {
         return (
-            <div>
+            <div> 
                 <h1>{props.title}</h1>
                 <h2>{props.subtitle}</h2>
             </div>
